@@ -9,8 +9,17 @@ class PostsController < ApplicationController
   redirect_to "/top"
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def index
+    @posts = Post.all
+  end
+
   private
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :note)
   end
+
 end
